@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Doc DOC doc """
+""" doc doc doc """
 import re
 from typing import List
 import logging
@@ -76,23 +76,6 @@ def main() -> None:
         log.info(row_str)
     cursor.close()
     db.close()
-
-import logging
-
-
-class RedactingFormatter(logging.Formatter):
-    """ Redacting Formatter class
-        """
-
-    REDACTION = "***"
-    FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
-    SEPARATOR = ";"
-
-    def __init__(self):
-        super(RedactingFormatter, self).__init__(self.FORMAT)
-
-    def format(self, record: logging.LogRecord) -> str:
-        NotImplementedError
 
 
 if __name__ == "__main__":
