@@ -1,10 +1,26 @@
 #!/usr/bin/env python3
 """
-Main file
+Declaring a SQLAlchemy model named 'User' corresponding to a
+database table named "users"
 """
-from user import User
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import (
+    Column,
+    Integer,
+    String,
+)
 
-print(User.__tablename__)
+Base = declarative_base()
 
-for column in User.__table__.columns:
-    print("{}: {}".format(column, column.type))
+
+class User(Base):
+    """
+    Defining of class User
+    """
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True)
+    email = Column(String(250), nullable=False)
+    hashed_password = Column(String(250), nullable=False)
+    session_id = Column(String(250), nullable=True)
+    reset_token = Column(String(250), nullable=True)
